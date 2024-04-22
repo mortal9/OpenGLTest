@@ -29,13 +29,16 @@ int main(void)
 
     float poisiton[] = {
            -0.5f, -0.5f,
-            0.0f, 0.5f,
+            0.0f,  0.5f,
             0.5f, -0.5f
     };
     unsigned int p;
     glGenBuffers(1,&p);
     glBindBuffer(GL_ARRAY_BUFFER, p);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(poisiton), poisiton, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, 6*sizeof(float), poisiton, GL_STATIC_DRAW);
+
+    glEnableVertexAttribArray(0);
+    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, 0);
 
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window))
